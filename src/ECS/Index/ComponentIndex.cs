@@ -43,5 +43,6 @@ public readonly struct ComponentIndex <TIndexedComponent,TValue>
     /// </remarks>
     public IReadOnlyCollection<TValue> Values => index.IndexedComponentValues;
     
-    public override string ToString() => $"Count: {Values.Count}";
+    // A default instance has no index, which can cause debuggers to detach.
+    public override string ToString() => index == null ? "default" : $"Count: {Values.Count}";
 }
